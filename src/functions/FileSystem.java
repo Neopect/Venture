@@ -31,8 +31,8 @@ public class FileSystem {
         getOS();
         createFsPath();
 
-        copyFiles("hero.conf", "Config");
-        copyFiles("enemy.conf", "Config");
+        //copyFiles("hero.conf", "Config");
+        //copyFiles("enemy.conf", "Config");
         
 
      }
@@ -51,8 +51,7 @@ public class FileSystem {
 
         Path destination = Paths.get(fullPath); //"C:\\Test\\TA\\Data\\" + fileName
 
-
-        try (InputStream stream = getClass().getResourceAsStream("/src/resources/"+ type +"/"+ fileName)) { //Fsdfsd
+        try (InputStream stream = ClassLoader.class.getResourceAsStream("src/resources/Config/hero.config")) { //Fsdfsd
             Files.copy(stream, destination);
             System.out.println("Copy complete");
         } catch (IOException e) {
@@ -62,17 +61,6 @@ public class FileSystem {
 
     }
 
-     private void getCompName() {
-
-        Map<String, String> env = System.getenv();
-        if (env.containsKey("COMPUTERNAME"))
-            PCName = env.get("COMPUTERNAME");
-        else if (env.containsKey("HOSTNAME"))
-            PCName = env.get("HOSTNAME");
-        else
-            PCName = "Unknown Computer";
-
-     }
 
      private String getOS() {
         String os_name = null;
