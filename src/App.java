@@ -1,5 +1,11 @@
-import java.awt.Robot;
-import java.awt.event.KeyEvent;
+import java.io.File;
+
+import functions.FileSystem;
+import functions.Settings;
+import views.Map;
+
+//import java.awt.Robot;
+//import java.awt.event.KeyEvent;
 
 public class App {
     public static void main(String[] args) throws Exception {
@@ -10,7 +16,19 @@ public class App {
         System.out.println("\b\b\b\b");
         //Runtime.getRuntime().exec("clear");
         //new ProcessBuilder("terminal", "/c", "clear").inheritIO().start().waitFor();
-       Robot robot = new Robot();
-       robot.keyPress(KeyEvent.VK_2);
+       //Robot robot = new Robot();
+       //robot.keyPress(KeyEvent.VK_2);
+       System.out.println("■");
+       //[◼]
+
+       Map map = new Map();
+       map.createMap(5, 3);
+       System.out.println(Map.board);       
+       map.displayMap();
+       Settings set = new Settings();
+       set.loadtest();
+
+       FileSystem fs = new FileSystem();
+       fs.createFS();
     }
 }
