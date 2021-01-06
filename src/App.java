@@ -1,4 +1,5 @@
 import java.io.File;
+import java.util.Scanner;
 
 import functions.FileSystem;
 import functions.Player;
@@ -9,6 +10,9 @@ import views.Map;
 //import java.awt.event.KeyEvent;
 
 public class App {
+
+    Boolean gameActive = null;
+
     public static void main(String[] args) throws Exception {
         /*
         System.out.println("Hello, World!");
@@ -23,7 +27,26 @@ public class App {
        System.out.println("■");
        //[◼]
 
-       Map map = new Map();
+       App app = new App();
+       //app.testing();
+       app.getInput();
+
+       
+    }
+
+
+    void getInput() {
+        Scanner sc = new Scanner(System.in);
+        sc.nextLine();
+
+        while(true) {
+
+        }
+
+    }
+
+    void testing() {
+        Map map = new Map();
        map.createMap(10, 6);
        //System.out.println(Map.board);       
        map.displayMap();
