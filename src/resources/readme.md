@@ -6,7 +6,9 @@ Resource folder for storing and keeping project related work
     * Wall
 * □
     * Free space
-* ▥
+* ⛋
     * Good guy (You)
-* ◫
+* ⧆
     * Bad guy
+* ⧮
+    * Goal

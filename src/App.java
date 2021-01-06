@@ -1,6 +1,7 @@
 import java.io.File;
 
 import functions.FileSystem;
+import functions.Player;
 import functions.Settings;
 import views.Map;
 
@@ -9,11 +10,12 @@ import views.Map;
 
 public class App {
     public static void main(String[] args) throws Exception {
+        /*
         System.out.println("Hello, World!");
         System.out.print("hello");
         System.out.println("\r worldss");
         System.out.print("Working");
-        System.out.println("\b\b\b\b");
+        System.out.println("\b\b\b\b");*/
         //Runtime.getRuntime().exec("clear");
         //new ProcessBuilder("terminal", "/c", "clear").inheritIO().start().waitFor();
        //Robot robot = new Robot();
@@ -22,13 +24,23 @@ public class App {
        //[◼]
 
        Map map = new Map();
-       map.createMap(5, 3);
-       System.out.println(Map.board);       
+       map.createMap(10, 6);
+       //System.out.println(Map.board);       
        map.displayMap();
+
        Settings set = new Settings();
        set.loadtest();
 
-       FileSystem fs = new FileSystem();
-       fs.createFS();
+       //FileSystem fs = new FileSystem();
+       //fs.createFS();
+
+       int[] e = map.calcPos(1, -4);
+       System.out.println(e[0]);
+       System.out.println(e[1]);
+
+       Player p = new Player();
+       //p.initiz();
+       p.move("right");
+       p.move("up");
     }
 }
