@@ -11,7 +11,8 @@ import views.Map;
 
 public class App {
 
-    Boolean gameActive = null;
+    public static Boolean gameActive = null;
+    Player player = new Player();
 
     public static void main(String[] args) throws Exception {
         /*
@@ -26,6 +27,7 @@ public class App {
        //robot.keyPress(KeyEvent.VK_2);
        System.out.println("■");
        //[◼]
+       gameActive = true;
 
        App app = new App();
        //app.testing();
@@ -37,9 +39,19 @@ public class App {
 
     void getInput() {
         Scanner sc = new Scanner(System.in);
-        sc.nextLine();
+        //sc.nextLine();
+        String in;
+        String response = "Please enter your command";
 
-        while(true) {
+        while(gameActive == true) {
+            System.out.println("Please enter your next command");
+            System.out.print("> ");
+            in = sc.nextLine();
+            System.out.println("You answered "+ in );
+
+            if(in.equals("left") || in.equals("right") || in.equals("up") || in.equals("down")) {
+                player.move(in);
+            }
 
         }
 
