@@ -6,7 +6,6 @@ import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Map;
 
 public class FileSystem {
     /**
@@ -36,7 +35,7 @@ public class FileSystem {
         
 
      }
-
+     @SuppressWarnings("unused")
      private void copyFiles(String fileName, String type) {
 
         //Path source = null;

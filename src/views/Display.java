@@ -8,6 +8,7 @@ public class Display {
     Map map = new Map();
 
      public void loadFrame(String event) {
+         
          System.out.println(feedback(event));
          map.displayMap();
 

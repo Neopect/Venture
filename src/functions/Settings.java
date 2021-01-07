@@ -7,6 +7,8 @@ import java.io.InputStream;
 import java.util.Properties;
 
 public class Settings {
+    
+    @SuppressWarnings("unused")
     public void loadtest() {
         Properties prop = new Properties();
         String fileName = "hero.config";

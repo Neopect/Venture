@@ -15,13 +15,13 @@ public class Player { //Use interface later on
 
     public static List<Integer> heroLoc = new ArrayList<Integer>();
 
-    public void initiz() {
+    /*public void initiz() {
         System.out.println("Working");
         heroLoc.add(Map.heroLoc.get(0));
         heroLoc.add(Map.heroLoc.get(1));
         heroLoc.add(Map.heroLoc.get(2));
         heroLoc.add(Map.heroLoc.get(3));
-    }
+    }*/
 
     public void move(String command) {
 
@@ -30,10 +30,10 @@ public class Player { //Use interface later on
         int yOld = heroLoc.get(1);
         int x = heroLoc.get(0);
         int y = heroLoc.get(1);
-        System.out.println(x  +" sss "+ y);
+        //System.out.println(x  +" sss "+ y);
         switch(command) {
             case "up":
-                System.out.println("up");
+                //System.out.println("up");
                 y--;
             break;
 
@@ -53,8 +53,8 @@ public class Player { //Use interface later on
             System.out.println("Invalid command");
             break;
         }
-        System.out.println(x  +" sss "+ y);
-        System.out.println(xOld  +" sss "+ yOld);
+        //System.out.println(x  +" sss "+ y);
+        //System.out.println(xOld  +" sss "+ yOld);
 
         // Create checker if out of bound
         if(x < 0 || x > Map.board.get(0).size()-1 || y < 0 || y > Map.board.size()-1) {
@@ -65,7 +65,7 @@ public class Player { //Use interface later on
             heroLoc.set(2, map.calcPos(x, y)[0]);
             heroLoc.set(3, map.calcPos(x, y)[1]);
 
-            System.out.println(heroLoc.get(2) + " " + heroLoc.get(3));
+            //System.out.println(heroLoc.get(2) + " " + heroLoc.get(3));
 
             map.moveChar(xOld, yOld, x, y, 1);
         }

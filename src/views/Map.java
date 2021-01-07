@@ -1,6 +1,5 @@
 package views;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,7 +9,7 @@ import functions.App;
 
 public class Map {
 
-    //@SuppressWarnings("rawtypes")
+    
     public static List<List<String>> board = new ArrayList<List<String>>();
     public static List<Integer> heroLoc = new ArrayList<Integer>();
     public static List<Integer> finish = new ArrayList<Integer>();
@@ -41,13 +40,13 @@ public class Map {
 
     private void populateMap() {
         /**
-         * Adds enemys and walls to the board
+         * Adds basics features to the board
          */
-        System.out.println("x");
+        //System.out.println("x");
 
         int[] bl = {0,board.size()-1};
         int[] tr = {board.get(0).size()-1,0};
-        System.out.println(bl[1] + "////" + bl[0]);
+        //System.out.println(bl[1] + "////" + bl[0]);
 
         //Place Hero and goal
         board.get(bl[1]).set(bl[0], "⛋");
@@ -63,7 +62,7 @@ public class Map {
         finish.add(calcPos(board.size()-1, 0)[0]);
         finish.add(calcPos(board.size()-1, 0)[1]);
         
-        System.out.println(Player.heroLoc.get(0)+ "  " + Player.heroLoc.get(1));
+        //System.out.println(Player.heroLoc.get(0)+ "  " + Player.heroLoc.get(1));
 
     }
 
@@ -89,17 +88,21 @@ public class Map {
     public void moveChar(int xOld, int yOld, int x, int y, int type) {
         /**
          * Move a charecter from one place to another using position to adjust map indexes
-         * 1 = Hero | 2 = Enemy |
+         * 1 = Hero | 2 = Enemy 
          */
         String icon = null;
         if(type == 1) {
             icon = "⛋";
+        } else if (type == 2) {
+            icon = "⧆";
+        } else if (type == 3) {
+            icon = "■";
         }
 
         int[] oldP = calcPos(xOld, yOld);
         int[] newP = calcPos(x, y);
 
-        if(newP[1] == Map.board.get(0).size()-1 && Map.board.get(0).size() == 1 && type == 1) {
+        if(newP[1] == Map.board.get(0).size()-1 && newP[0] == 0 && type == 1) {
             App.gameActive = false;
         }
 
@@ -110,12 +113,6 @@ public class Map {
             System.out.println("Out of range");
             e.printStackTrace();
         }
-
-        
-
-        //displayMap();
-
-
 
     }
 

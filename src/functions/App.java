@@ -1,11 +1,8 @@
 package functions;
 
-import java.io.File;
+
 import java.util.Scanner;
 
-import functions.FileSystem;
-import functions.Player;
-import functions.Settings;
 import views.Display;
 import views.Map;
 
@@ -19,23 +16,13 @@ public class App {
     Display display = new Display();
     Map map = new Map();
 
-    public static void main(String[] args) throws Exception {
-        /*
-        System.out.println("Hello, World!");
-        System.out.print("hello");
-        System.out.println("\r worldss");
-        System.out.print("Working");
-        System.out.println("\b\b\b\b");*/
-        //Runtime.getRuntime().exec("clear");
-        //new ProcessBuilder("terminal", "/c", "clear").inheritIO().start().waitFor();
-       //Robot robot = new Robot();
-       //robot.keyPress(KeyEvent.VK_2);
-       System.out.println("■");
-       //[◼]
+    public static void main(String[] args) {
+        
+       System.out.println("Starting program");
+       
        gameActive = true;
 
        App app = new App();
-       //app.testing();
        app.getInput();
 
        
@@ -52,6 +39,7 @@ public class App {
             System.out.println(response);
             System.out.print("> ");
             in = sc.nextLine();
+            System.out.println("\n\n\n\n\n\n\n\n");
             System.out.println("You answered "+ in );
 
             if(in.equals("left") || in.equals("right") || in.equals("up") || in.equals("down")) {
@@ -72,7 +60,7 @@ public class App {
             display.loadFrame(in);
 
         }
-
+        sc.close();
         System.out.println("You win! Good job");
 
         
