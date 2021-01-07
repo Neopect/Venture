@@ -55,14 +55,22 @@ public class Player { //Use interface later on
         }
         System.out.println(x  +" sss "+ y);
         System.out.println(xOld  +" sss "+ yOld);
-        heroLoc.set(0, x);
-        heroLoc.set(1, y);
-        heroLoc.set(2, map.calcPos(x, y)[0]);
-        heroLoc.set(3, map.calcPos(x, y)[1]);
 
-        System.out.println(heroLoc.get(2) + " " + heroLoc.get(3));
+        // Create checker if out of bound
+        if(x < 0 || x > Map.board.get(0).size()-1 || y < 0 || y > Map.board.size()-1) {
+            System.out.println("Invalid move");
+        } else {
+            heroLoc.set(0, x);
+            heroLoc.set(1, y);
+            heroLoc.set(2, map.calcPos(x, y)[0]);
+            heroLoc.set(3, map.calcPos(x, y)[1]);
 
-        map.moveChar(xOld, yOld, x, y, 1);
+            System.out.println(heroLoc.get(2) + " " + heroLoc.get(3));
+
+            map.moveChar(xOld, yOld, x, y, 1);
+        }
+
+        
 
 
     }

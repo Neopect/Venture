@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import functions.Player;
+import functions.App;
+
 
 public class Map {
 
@@ -12,12 +14,16 @@ public class Map {
     public static List<List<String>> board = new ArrayList<List<String>>();
     public static List<Integer> heroLoc = new ArrayList<Integer>();
     public static List<Integer> finish = new ArrayList<Integer>();
+    public static List<Integer> boardSize = new ArrayList<Integer>();
 
 
     public void createMap(int x, int y) {
         /**
          * Creates frame for the board list
          */
+
+         boardSize.add(x);
+         boardSize.add(y);
 
         for(int u = 0; u < y; u++) { 
             List<String> row = new ArrayList<String>();
@@ -93,10 +99,21 @@ public class Map {
         int[] oldP = calcPos(xOld, yOld);
         int[] newP = calcPos(x, y);
 
-        Map.board.get(oldP[0]).set(oldP[1], "□");
-        Map.board.get(newP[0]).set(newP[1], icon);
+        if(newP[1] == Map.board.get(0).size()-1 && Map.board.get(0).size() == 1 && type == 1) {
+            App.gameActive = false;
+        }
 
-        displayMap();
+        try {
+            Map.board.get(oldP[0]).set(oldP[1], "□");
+            Map.board.get(newP[0]).set(newP[1], icon);
+        } catch (Exception e) {
+            System.out.println("Out of range");
+            e.printStackTrace();
+        }
+
+        
+
+        //displayMap();
 
 
 

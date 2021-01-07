@@ -1,9 +1,12 @@
+package functions;
+
 import java.io.File;
 import java.util.Scanner;
 
 import functions.FileSystem;
 import functions.Player;
 import functions.Settings;
+import views.Display;
 import views.Map;
 
 //import java.awt.Robot;
@@ -13,6 +16,8 @@ public class App {
 
     public static Boolean gameActive = null;
     Player player = new Player();
+    Display display = new Display();
+    Map map = new Map();
 
     public static void main(String[] args) throws Exception {
         /*
@@ -44,16 +49,33 @@ public class App {
         String response = "Please enter your command";
 
         while(gameActive == true) {
-            System.out.println("Please enter your next command");
+            System.out.println(response);
             System.out.print("> ");
             in = sc.nextLine();
             System.out.println("You answered "+ in );
 
             if(in.equals("left") || in.equals("right") || in.equals("up") || in.equals("down")) {
                 player.move(in);
+            } else if(in.equals("attack")) {
+
+            } else if (in.equals("start")) {
+                System.out.println("Please enter X length");
+                int xin = Integer.parseInt(sc.nextLine());
+                System.out.println("Please enter Y length");
+                int yin = Integer.parseInt(sc.nextLine());
+
+                map.createMap(xin, yin);
+            } else if(in.equals("quit")) {
+                break;
             }
+            response = "Please enter your next command";
+            display.loadFrame(in);
 
         }
+
+        System.out.println("You win! Good job");
+
+        
 
     }
 
