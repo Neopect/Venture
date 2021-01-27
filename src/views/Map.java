@@ -2,6 +2,7 @@ package views;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import functions.Player;
 import functions.App;
@@ -15,6 +16,8 @@ public class Map {
     public static List<Integer> finish = new ArrayList<Integer>();
     public static List<Integer> boardSize = new ArrayList<Integer>();
 
+    int flagpos_x;
+    int flagpos_y;
 
     public void createMap(int x, int y) {
         /**
@@ -42,15 +45,20 @@ public class Map {
         /**
          * Adds basics features to the board
          */
-        //System.out.println("x");
 
         int[] bl = {0,board.size()-1};
         int[] tr = {board.get(0).size()-1,0};
-        //System.out.println(bl[1] + "////" + bl[0]);
 
         //Place Hero and goal
         board.get(bl[1]).set(bl[0], "⛋");
-        board.get(tr[1]).set(tr[0], "⧮");
+
+        Random rand = new Random();
+        
+        flagpos_x = rand.nextInt(boardSize.get(0));
+        flagpos_y = rand.nextInt(boardSize.get(1));
+        
+        board.get(flagpos_x).set(flagpos_y, "⧮");
+
 
         Player.heroLoc.add(0);
         Player.heroLoc.add(board.size()-1);
@@ -62,7 +70,6 @@ public class Map {
         finish.add(calcPos(board.size()-1, 0)[0]);
         finish.add(calcPos(board.size()-1, 0)[1]);
         
-        //System.out.println(Player.heroLoc.get(0)+ "  " + Player.heroLoc.get(1));
 
     }
 
@@ -102,7 +109,7 @@ public class Map {
         int[] oldP = calcPos(xOld, yOld);
         int[] newP = calcPos(x, y);
 
-        if(newP[1] == Map.board.get(0).size()-1 && newP[0] == 0 && type == 1) {
+        if(newP[0] == flagpos_x && newP[1] == flagpos_y && type == 1) {
             App.gameActive = false;
         }
 
@@ -117,8 +124,3 @@ public class Map {
     }
 
 }
-
-
-/**
- * 
- */
